@@ -5,7 +5,7 @@ const brzuszek = document.getElementsByTagName('body')[0];
 const height = window.innerHeight;
 console.log(height);
 var lol;
-var db = ['youtube'];
+var db = ['youtube', 'a'];
 var showAlert;
 
 // Restores select box and checkbox state using the preferences
@@ -31,7 +31,7 @@ function replaceText(element) {
         element.childNodes.forEach(replaceText)
     } else if (element.nodeType === Text.TEXT_NODE) {
 
-        db.forEach(function(word) {
+        db.some(function(word) {
             var myExp = new RegExp(word, 'gi');
 
             if (element.textContent.match(myExp)) {
