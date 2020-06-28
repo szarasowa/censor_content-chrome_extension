@@ -1,17 +1,17 @@
-var lol;
-
 // Saves options to chrome.storage
 function save_options() {
     var color = ['andrzej duda'];
     var likesColor = document.getElementById('like').checked;
+    var showAlert = document.getElementById('showAlertCheckbox').checked;
     chrome.storage.sync.set({
         favoriteColor: color,
-        likesColor: likesColor
-    }, function () {
+        likesColor: likesColor,
+        showAlert: showAlert
+    }, function() {
         // Update status to let user know options were saved.
         var status = document.getElementById('status');
         status.textContent = 'Options saved.';
-        setTimeout(function () {
+        setTimeout(function() {
             status.textContent = '';
         }, 750);
     });
@@ -23,11 +23,13 @@ function restore_options() {
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.sync.get({
         favoriteColor: ['red'],
-        likesColor: true
-    }, function (items) {
+        likesColor: true,
+        showAlert: false
+    }, function(items) {
         document.getElementById('color').value = items.favoriteColor;
         document.getElementById('like').checked = items.likesColor;
-        lol = items.favoriteColor;
+        document.getElementById('showAlertCheckbox').checked = items.showAlert;
+        console.log("Show alert: " + items.showAlert);
     });
 }
 document.addEventListener('DOMContentLoaded', restore_options);

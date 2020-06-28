@@ -36,19 +36,7 @@
 }
 
 
-/* CSS for options <form> */
-
-
-/* Include the padding and border in an element's total width and height */
-
-
-/* 
-* {
-    box-sizing: border-box;
-} */
-
-
-/* Remove margins and padding from the list */
+/* FORM FORM FORM FORM FORM */
 
 ul {
     margin: 0;
@@ -89,16 +77,18 @@ ul li:hover {
 
 /* When clicked on, add a background color and strike out text */
 
-ul li.checked {
+
+/* ul li.checked {
     background: #888;
     color: #fff;
     text-decoration: line-through;
-}
+} */
 
 
 /* Add a "checked" mark when clicked on */
 
-ul li.checked::before {
+
+/* ul li.checked::before {
     content: '';
     position: absolute;
     border-color: #fff;
@@ -109,7 +99,7 @@ ul li.checked::before {
     transform: rotate(45deg);
     height: 15px;
     width: 7px;
-}
+} */
 
 
 /* Style the close button */
@@ -179,9 +169,9 @@ input {
 }
 
 
-/* CHECKBOX */
+/* CHECKBOX CHECKBOX CHECKBOX CHECKBOX */
 
-.neumorphism-toggle {
+.showAlertCheckbox-toggle {
     position: relative;
     -webkit-transition: -webkit-transform 0.3s;
     transition: -webkit-transform 0.3s;
@@ -191,15 +181,15 @@ input {
     transform: scale(var(--scale, 1)) translateZ(0);
 }
 
-.neumorphism-toggle:active {
+.showAlertCheckbox-toggle:active {
     --scale: 0.96;
 }
 
-.neumorphism-toggle input {
+.showAlertCheckbox-toggle input {
     display: none;
 }
 
-.neumorphism-toggle input+label {
+.showAlertCheckbox-toggle input+label {
     background: #fff;
     border-radius: 9px;
     padding: 16px 0 16px 20px;
@@ -212,7 +202,7 @@ input {
     transition: box-shadow 0.4s;
 }
 
-.neumorphism-toggle input+label:before {
+.showAlertCheckbox-toggle input+label:before {
     content: "";
     position: absolute;
     left: 0;
@@ -226,7 +216,7 @@ input {
     transition: opacity 0.4s;
 }
 
-.neumorphism-toggle input+label .switch {
+.showAlertCheckbox-toggle input+label .switch {
     position: relative;
     display: inline-block;
     z-index: 1;
@@ -237,7 +227,7 @@ input {
     background: #eceffc;
 }
 
-.neumorphism-toggle input+label .switch:before {
+.showAlertCheckbox-toggle input+label .switch:before {
     content: "";
     position: absolute;
     left: 0;
@@ -252,7 +242,7 @@ input {
     transition: opacity 0.4s;
 }
 
-.neumorphism-toggle input+label .switch .dot {
+.showAlertCheckbox-toggle input+label .switch .dot {
     background: #d1d6ee;
     position: absolute;
     width: 24px;
@@ -269,7 +259,7 @@ input {
     box-shadow: -4px -4px 8px var(--light-shadow-2, transparent), 4px 4px 8px var(--shadow, transparent);
 }
 
-.neumorphism-toggle input+label .switch .dot:before {
+.showAlertCheckbox-toggle input+label .switch .dot:before {
     content: "";
     position: absolute;
     left: 0;
@@ -283,7 +273,7 @@ input {
     transition: opacity 0.4s;
 }
 
-.neumorphism-toggle input+label span {
+.showAlertCheckbox-toggle input+label span {
     line-height: 22px;
     font-size: 16px;
     color: var(--text, #646b8c);
@@ -297,7 +287,7 @@ input {
     transition: color 0.4s;
 }
 
-.neumorphism-toggle input+label+span {
+.showAlertCheckbox-toggle input+label+span {
     text-align: center;
     display: block;
     position: absolute;
@@ -317,44 +307,18 @@ input {
 }
 
 
-/* .neumorphism-toggle input:not(:checked)+label {
+/* .showAlertCheckbox-toggle input:not(:checked)+label {
     pointer-events: none;
 } */
 
-.neumorphism-toggle input:not(:checked)+label+span {
+.showAlertCheckbox-toggle input:not(:checked)+label+span {
     opacity: 1;
     -webkit-transform: translateY(12px);
     transform: translateY(12px);
 }
 
-.neumorphism-toggle input:checked+label {
+.showAlertCheckbox-toggle input:checked+label {
     --offset: 18px;
     --text: #404660;
     --gradient: 1;
-    --shadow: rgba(0, 6, 39, 0.1);
-    --light-shadow: rgba(255, 255, 255, 0.8);
-    --light-shadow-2: rgba(255, 255, 255, 0.1);
 }
-
-
-/* 
-* {
-    box-sizing: inherit;
-}
-
-*:before,
-*:after {
-    box-sizing: inherit;
-}
-
-body {
-    min-height: 100vh;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    font-family: "Inter", "Inter UI", Arial;
-    background: #f6f8ff;
-} */
