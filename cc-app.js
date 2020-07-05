@@ -5,7 +5,7 @@ const brzuszek = document.getElementsByTagName('body')[0];
 const height = window.innerHeight;
 console.log(height);
 var lol;
-var db = ['youtube', 'a'];
+var db = ['youtube'];
 var showAlert;
 
 // Restores select box and checkbox state using the preferences

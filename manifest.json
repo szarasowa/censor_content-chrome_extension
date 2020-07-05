@@ -10,9 +10,15 @@
     "permissions": ["storage"],
     "options_ui": {
         "page": "opt.html",
-        "open_in_tab": true
+        "open_in_tab": false
+
     },
     "content_security_policy": "script-src 'self' https://apis.google.com; object-src 'self'",
-    "manifest_version": 2
+    "manifest_version": 2,
+
+    "browser_action": {
+        "default_title": "Click here to open menu",
+        "default_popup": "opt.html"
+    }
 
 }
