@@ -171,7 +171,7 @@ input {
 
 /* CHECKBOX CHECKBOX CHECKBOX CHECKBOX */
 
-.showAlertCheckbox-toggle {
+.mCheckbox-toggle {
     position: relative;
     -webkit-transition: -webkit-transform 0.3s;
     transition: -webkit-transform 0.3s;
@@ -181,15 +181,15 @@ input {
     transform: scale(var(--scale, 1)) translateZ(0);
 }
 
-.showAlertCheckbox-toggle:active {
+.mCheckbox-toggle:active {
     --scale: 0.96;
 }
 
-.showAlertCheckbox-toggle input {
+.mCheckbox-toggle input {
     display: none;
 }
 
-.showAlertCheckbox-toggle input+label {
+.mCheckbox-toggle input+label {
     background: #fff;
     border-radius: 9px;
     padding: 16px 0 16px 20px;
@@ -202,7 +202,7 @@ input {
     transition: box-shadow 0.4s;
 }
 
-.showAlertCheckbox-toggle input+label:before {
+.mCheckbox-toggle input+label:before {
     content: "";
     position: absolute;
     left: 0;
@@ -216,7 +216,7 @@ input {
     transition: opacity 0.4s;
 }
 
-.showAlertCheckbox-toggle input+label .switch {
+.mCheckbox-toggle input+label .switch {
     position: relative;
     display: inline-block;
     z-index: 1;
@@ -227,7 +227,7 @@ input {
     background: #eceffc;
 }
 
-.showAlertCheckbox-toggle input+label .switch:before {
+.mCheckbox-toggle input+label .switch:before {
     content: "";
     position: absolute;
     left: 0;
@@ -242,7 +242,7 @@ input {
     transition: opacity 0.4s;
 }
 
-.showAlertCheckbox-toggle input+label .switch .dot {
+.mCheckbox-toggle input+label .switch .dot {
     background: #d1d6ee;
     position: absolute;
     width: 24px;
@@ -259,7 +259,7 @@ input {
     box-shadow: -4px -4px 8px var(--light-shadow-2, transparent), 4px 4px 8px var(--shadow, transparent);
 }
 
-.showAlertCheckbox-toggle input+label .switch .dot:before {
+.mCheckbox-toggle input+label .switch .dot:before {
     content: "";
     position: absolute;
     left: 0;
@@ -273,7 +273,7 @@ input {
     transition: opacity 0.4s;
 }
 
-.showAlertCheckbox-toggle input+label span {
+.mCheckbox-toggle input+label span {
     line-height: 22px;
     font-size: 16px;
     color: var(--text, #646b8c);
@@ -287,7 +287,7 @@ input {
     transition: color 0.4s;
 }
 
-.showAlertCheckbox-toggle input+label+span {
+.mCheckbox-toggle input+label+span {
     text-align: center;
     display: block;
     position: absolute;
@@ -307,17 +307,17 @@ input {
 }
 
 
-/* .showAlertCheckbox-toggle input:not(:checked)+label {
+/* .mCheckbox-toggle input:not(:checked)+label {
     pointer-events: none;
 } */
 
-.showAlertCheckbox-toggle input:not(:checked)+label+span {
+.mCheckbox-toggle input:not(:checked)+label+span {
     opacity: 1;
     -webkit-transform: translateY(12px);
     transform: translateY(12px);
 }
 
-.showAlertCheckbox-toggle input:checked+label {
+.mCheckbox-toggle input:checked+label {
     --offset: 18px;
     --text: #404660;
     --gradient: 1;

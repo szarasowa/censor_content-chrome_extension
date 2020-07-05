@@ -1,17 +1,20 @@
 // Saves options to chrome.storage
 function save_options() {
-    var color = ['andrzej duda'];
-    var likesColor = document.getElementById('like').checked;
+    // var color = ['andrzej duda'];
+    // var likesColor = document.getElementById('like').checked;
     var showAlert = document.getElementById('showAlertCheckbox').checked;
     var blockImg = document.getElementById('blockImagesCheckbox').checked;
+    var turnOn = document.getElementById('turnOnCheckbox').checked;
     chrome.storage.sync.set({
-        favoriteColor: color,
-        likesColor: likesColor,
+        // favoriteColor: color,
+        // likesColor: likesColor,
         showAlert: showAlert,
-        blockImg: blockImg
+        blockImg: blockImg,
+        turnOn: turnOn
     }, function() {
         // Update status to let user know options were saved.
         var status = document.getElementById('status');
+        console.log("Options Saved.")
         status.textContent = 'Options saved.';
         setTimeout(function() {
             status.textContent = '';
@@ -24,20 +27,35 @@ function save_options() {
 function restore_options() {
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.sync.get({
-        favoriteColor: ['red'],
-        likesColor: true,
+        // favoriteColor: ['red'],
+        // likesColor: true,
         showAlert: false,
-        blockImg: false
+        blockImg: false,
+        turnOn: true
     }, function(items) {
-        document.getElementById('color').value = items.favoriteColor;
-        document.getElementById('like').checked = items.likesColor;
+        // document.getElementById('color').value = items.favoriteColor;
+        document.getElementById('turnOnCheckbox').checked = items.turnOn;
+        // document.getElementById('like').checked = items.likesColor;
         document.getElementById('showAlertCheckbox').checked = items.showAlert;
         document.getElementById('blockImagesCheckbox').checked = items.blockImg;
     });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click',
-    save_options);
+// document.getElementById('save').addEventListener('click',
+//     save_options);
+
+Array.from(document.getElementsByClassName("mCheckbox-toggle")).forEach(function(e) {
+    e.addEventListener('click', save_options);
+})
+
+// setTimeout(function() {
+//     Array.from(document.getElementsByClassName("close")).forEach(
+//         function(e) {
+//             e.addEventListener('click', save_options);
+//         }
+//     )
+// }, 100)
+
 
 
 
@@ -76,6 +94,7 @@ for (i = 0; i < myNodelist.length; i++) {
     span.className = "close";
     span.appendChild(txt);
     myNodelist[i].appendChild(span);
+    span.addEventListener('click', save_options);
 }
 
 // Click on a close button to hide the current list item
@@ -112,6 +131,7 @@ function newElement() {
     var span = document.createElement("SPAN");
     var txt = document.createTextNode("\u00D7");
     span.className = "close";
+    span.addEventListener('click', save_options);
     span.appendChild(txt);
     li.appendChild(span);
 
@@ -123,4 +143,7 @@ function newElement() {
     }
 }
 
-document.getElementById('addButton').addEventListener('click', newElement);
+document.getElementById('addButton').addEventListener('click', () => {
+    newElement();
+    save_options()
+});

@@ -8,6 +8,7 @@ var lol;
 var db = ['youtube'];
 var showAlert;
 var blockImg;
+var turnOn;
 
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
@@ -17,17 +18,23 @@ function restore_options() {
         favoriteColor: ['red', 'bbb'],
         likesColor: true,
         showAlert: false,
-        blockImg: false
+        blockImg: false,
+        turnOn: true
     }, function(items) {
         db.push(items.favoriteColor);
         showAlert = items.showAlert;
         blockImg = items.blockImg;
-        console.log("Censore..: " + db);
+        turnOn = items.turnOn;
+        console.log("CC-APP status: " + turnOn + "\nCensore: " + db);
         console.log("Options status: \n" + "Show alert: " + items.showAlert + "\nBlock all images: " + items.blockImg);
-        replaceText(document.body);
     });
 }
+
 restore_options();
+
+setTimeout(function() {
+    turnOn ? replaceText(document.body) : console.log("CC-APP status: " + turnOn);
+}, 300);
 
 function replaceText(element) {
     if (element.hasChildNodes()) {

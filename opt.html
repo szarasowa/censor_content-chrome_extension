@@ -8,7 +8,36 @@
 </head>
 
 <body>
-    <div class="showAlertCheckbox-toggle">
+    <div id="status"></div>
+    <div class="mCheckbox-toggle">
+        <input type="checkbox" id="turnOnCheckbox">
+        <label for="turnOnCheckbox">
+            <div class="switch">
+                <div class="dot"></div>
+            </div>
+            <span><b>On/Off</b></span>
+        </label>
+    </div>
+
+
+    <div id="myDIV" class="header">
+        <h2>Content To Censore</h2>
+        <input type="text" id="myInput" placeholder="Title...">
+        <span id="addButton" class="addBtn">Add</span>
+    </div>
+
+    <ul id="myUL">
+        <li>Hit the gym</li>
+        <li>Pay bills</li>
+        <li>Meet George</li>
+    </ul>
+
+    <div class="header">
+        Options
+    </div>
+
+
+    <div class="mCheckbox-toggle">
         <input type="checkbox" id="showAlertCheckbox">
         <label for="showAlertCheckbox">
             <div class="switch">
@@ -20,7 +49,7 @@
       </label>
     </div>
 
-    <div class="showAlertCheckbox-toggle">
+    <div class="mCheckbox-toggle">
         <input type="checkbox" id="blockImagesCheckbox">
         <label for="blockImagesCheckbox">
             <div class="switch">
@@ -32,26 +61,7 @@
         </label>
 
     </div>
-
-    <div id="myDIV" class="header">
-        <h2>Content To Censore</h2>
-        <input type="text" id="myInput" placeholder="Title...">
-        <span id="addButton" class="addBtn">Add</span>
-    </div>
-
-    <ul id="myUL">
-        <li>Hit the gym</li>
-        <li class="checked">Pay bills</li>
-        <li>Meet George</li>
-        <li>Buy eggs</li>
-        <li>Read a book</li>
-        <li>Organize office</li>
-    </ul>
-
-    <div class="header">
-        Options
-    </div>
-
+    <!-- 
     <div>
         <select id="color">
             <option value="red">red</option>
@@ -65,8 +75,7 @@
 
     </div>
 
-    <div id="status"></div>
-    <button id="save">Save</button>
+    <button id="save">Save</button> -->
 
     <script src="opt.js"></script>
 </body>
