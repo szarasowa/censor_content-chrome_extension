@@ -6,6 +6,10 @@
     transition: height 13s ease;
 } */
 
+body {
+    min-width: 450px;
+}
+
 .rainbow {
     animation: rainbow 600ms;
     animation-iteration-count: infinite;
@@ -140,11 +144,12 @@ ul li:hover {
 
 input {
     margin: 0;
+    margin-right: 15px;
     border: none;
     border-radius: 0;
-    width: 75%;
+    width: 60%;
     padding: 10px;
-    float: left;
+    float: center;
     font-size: 16px;
 }
 
@@ -156,7 +161,7 @@ input {
     width: 25%;
     background: #d9d9d9;
     color: #555;
-    float: left;
+    float: center;
     text-align: center;
     font-size: 16px;
     cursor: pointer;

@@ -1,3 +1,5 @@
+var mList = [];
+
 // Saves options to chrome.storage
 function save_options() {
     // var color = ['andrzej duda'];
@@ -10,7 +12,8 @@ function save_options() {
         // likesColor: likesColor,
         showAlert: showAlert,
         blockImg: blockImg,
-        turnOn: turnOn
+        turnOn: turnOn,
+        mList: mList
     }, function() {
         // Update status to let user know options were saved.
         var status = document.getElementById('status');
@@ -31,13 +34,15 @@ function restore_options() {
         // likesColor: true,
         showAlert: false,
         blockImg: false,
-        turnOn: true
+        turnOn: true,
+        mList: []
     }, function(items) {
         // document.getElementById('color').value = items.favoriteColor;
         document.getElementById('turnOnCheckbox').checked = items.turnOn;
         // document.getElementById('like').checked = items.likesColor;
         document.getElementById('showAlertCheckbox').checked = items.showAlert;
         document.getElementById('blockImagesCheckbox').checked = items.blockImg;
+        Array.from(items.mList).forEach(e => newElement(e));
     });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
@@ -116,16 +121,26 @@ for (i = 0; i < close.length; i++) {
 // }, false);
 
 // Create a new list item when clicking on the "Add" button
-function newElement() {
-    var li = document.createElement("li");
+function addByButton() {
     var inputValue = document.getElementById("myInput").value;
-    var t = document.createTextNode(inputValue);
+
+    setTimeout(function() {
+        if (inputValue === '') {
+            alert("You must write something!");
+        } else {
+            mList.push(String(inputValue));
+            newElement(inputValue);
+            save_options()
+        }
+    }, 300)
+}
+
+function newElement(v) {
+    var li = document.createElement("li");
+    var t = document.createTextNode(v);
     li.appendChild(t);
-    if (inputValue === '') {
-        alert("You must write something!");
-    } else {
-        document.getElementById("myUL").appendChild(li);
-    }
+
+    document.getElementById("myUL").appendChild(li);
     document.getElementById("myInput").value = "";
 
     var span = document.createElement("SPAN");
@@ -144,6 +159,11 @@ function newElement() {
 }
 
 document.getElementById('addButton').addEventListener('click', () => {
-    newElement();
-    save_options()
+    addByButton();
 });
+
+document.getElementById('myInput').onkeydown = function(e) {
+    if (e.keyCode == 13) {
+        addByButton();
+    }
+};

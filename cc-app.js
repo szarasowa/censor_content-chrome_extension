@@ -5,23 +5,25 @@ const brzuszek = document.getElementsByTagName('body')[0];
 const height = window.innerHeight;
 console.log(height);
 var lol;
-var db = ['youtube'];
+var db = [];
 var showAlert;
 var blockImg;
 var turnOn;
+var blockTxt;
 
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_options() {
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.sync.get({
-        favoriteColor: ['red', 'bbb'],
-        likesColor: true,
+        // favoriteColor: ['red', 'bbb'],
+        // likesColor: true,
+        mList: [],
         showAlert: false,
         blockImg: false,
         turnOn: true
     }, function(items) {
-        db.push(items.favoriteColor);
+        db = [...items.mList];
         showAlert = items.showAlert;
         blockImg = items.blockImg;
         turnOn = items.turnOn;
