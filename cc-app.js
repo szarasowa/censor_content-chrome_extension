@@ -7,6 +7,7 @@ console.log(height);
 var lol;
 var db = ['youtube'];
 var showAlert;
+var blockImg;
 
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
@@ -15,12 +16,14 @@ function restore_options() {
     chrome.storage.sync.get({
         favoriteColor: ['red', 'bbb'],
         likesColor: true,
-        showAlert: false
+        showAlert: false,
+        blockImg: false
     }, function(items) {
         db.push(items.favoriteColor);
-        console.log("Censore..: " + db);
         showAlert = items.showAlert;
-        console.log("Show alert: " + items.showAlert);
+        blockImg = items.blockImg;
+        console.log("Censore..: " + db);
+        console.log("Options status: \n" + "Show alert: " + items.showAlert + "\nBlock all images: " + items.blockImg);
         replaceText(document.body);
     });
 }
@@ -42,7 +45,7 @@ function replaceText(element) {
                 //   newElement.setAttribute('style', 'rainbow');
                 //   newElement.innerHTML = element.textContent.replace(/(coronavirus)/gi, '<span class="rainbow">$1</span>')
                 //   element.parentElement.setAttribute('style', 'rainbow');
-                if (showAlert) {
+                if (!executed) {
                     showMeAlert();
                 }
             }
@@ -52,7 +55,7 @@ function replaceText(element) {
 
 
 function showMeAlert() {
-    if (!executed) {
+    if (showAlert) {
         setTimeout(function() {
             alert("ALERT! AHTUNG! OMG! NOOOOOOOOO! \nCensor Content application found content you want to hide:\n \n" + db);
         }, 300);
