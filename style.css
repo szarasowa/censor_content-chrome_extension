@@ -1,46 +1,9 @@
-/* * {
-    -webkit-transition: height 13s ease;
-    -moz-transition: height 13s ease;
-    -ms-transition: height 13s ease;
-    -o-transition: height 13s ease;
-    transition: height 13s ease;
-} */
-
 body {
     min-width: 450px;
 }
 
-.rainbow {
-    animation: rainbow 600ms;
-    animation-iteration-count: infinite;
-}
 
-@keyframes rainbow {
-    0% {
-        color: red;
-    }
-    15% {
-        color: orange;
-    }
-    30% {
-        color: yellow;
-    }
-    45% {
-        color: green;
-    }
-    60% {
-        color: blue;
-    }
-    75% {
-        color: indigo;
-    }
-    90% {
-        color: purple;
-    }
-}
-
-
-/* FORM FORM FORM FORM FORM */
+/* FORM */
 
 ul {
     margin: 0;
@@ -79,40 +42,20 @@ ul li:hover {
 }
 
 
-/* When clicked on, add a background color and strike out text */
-
-
-/* ul li.checked {
-    background: #888;
-    color: #fff;
-    text-decoration: line-through;
-} */
-
-
-/* Add a "checked" mark when clicked on */
-
-
-/* ul li.checked::before {
-    content: '';
-    position: absolute;
-    border-color: #fff;
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    top: 10px;
-    left: 16px;
-    transform: rotate(45deg);
-    height: 15px;
-    width: 7px;
-} */
-
-
 /* Style the close button */
 
 .close {
     position: absolute;
     right: 0;
     top: 0;
-    padding: 12px 16px 12px 16px;
+    width: 48px;
+    height: 48px;
+    /* padding: 12px 16px 12px 16px; */
+    background-image: url('images/baseline_cancel_black_36dp.png');
+    background-repeat: no-repeat;
+    background-size: 36px;
+    opacity: 0.8;
+    background-position: center;
 }
 
 .close:hover {
@@ -310,11 +253,6 @@ input {
     transition: opacity 0.4s, transform 0.4s;
     transition: opacity 0.4s, transform 0.4s, -webkit-transform 0.4s;
 }
-
-
-/* .mCheckbox-toggle input:not(:checked)+label {
-    pointer-events: none;
-} */
 
 .mCheckbox-toggle input:not(:checked)+label+span {
     opacity: 1;

@@ -1,5 +1,5 @@
 var executed = false;
-var hideContent = false;
+// var hideContent = false;
 const domek = document.getElementsByTagName('html')[0].innerHTML;
 const brzuszek = document.getElementsByTagName('body')[0];
 const height = window.innerHeight;
@@ -21,7 +21,7 @@ function restore_options() {
         mList: [],
         showAlert: false,
         blockImg: false,
-        turnOn: true
+        turnOn: false
     }, function(items) {
         db = [...items.mList];
         showAlert = items.showAlert;
@@ -36,7 +36,7 @@ restore_options();
 
 setTimeout(function() {
     turnOn ? replaceText(document.body) : console.log("CC-APP status: " + turnOn);
-}, 300);
+}, 1);
 
 function replaceText(element) {
     if (element.hasChildNodes()) {
@@ -47,13 +47,12 @@ function replaceText(element) {
             var myExp = new RegExp(word, 'gi');
 
             if (element.textContent.match(myExp)) {
-                hideContent = true;
+                // hideContent = true;
                 element.parentElement.style.color = 'black';
                 element.parentElement.style.backgroundColor = 'black';
-                //   const newElement = document.createElement('span')
-                //   newElement.setAttribute('style', 'rainbow');
-                //   newElement.innerHTML = element.textContent.replace(/(coronavirus)/gi, '<span class="rainbow">$1</span>')
-                //   element.parentElement.setAttribute('style', 'rainbow');
+
+                element.parentElement.style.opacity = "0.1";
+
                 if (!executed) {
                     showMeAlert();
                 }
@@ -67,7 +66,7 @@ function showMeAlert() {
     if (showAlert) {
         setTimeout(function() {
             alert("ALERT! AHTUNG! OMG! NOOOOOOOOO! \nCensor Content application found content you want to hide:\n \n" + db);
-        }, 300);
+        }, 100);
     }
     executed = true;
 }
