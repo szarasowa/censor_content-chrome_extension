@@ -19,6 +19,7 @@ ul li {
     padding: 12px 8px 12px 40px;
     background: #eee;
     font-size: 18px;
+    font-weight: 600;
     transition: 0.2s;
     /* make the list items unselectable */
     -webkit-user-select: none;

@@ -1,6 +1,6 @@
 {
     "name": "Censor Content",
-    "version": "0.1",
+    "version": "1.0",
     "description": "Censor unwanted content on this page",
     "content_scripts": [{
         "matches": ["<all_urls>"],

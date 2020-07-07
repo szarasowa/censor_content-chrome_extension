@@ -36,7 +36,7 @@ restore_options();
 
 setTimeout(function() {
     turnOn ? replaceText(document.body) : console.log("CC-APP status: " + turnOn);
-}, 1);
+}, 11);
 
 function replaceText(element) {
     if (element.hasChildNodes()) {
@@ -50,9 +50,13 @@ function replaceText(element) {
                 // hideContent = true;
                 element.parentElement.style.color = 'black';
                 element.parentElement.style.backgroundColor = 'black';
-
                 element.parentElement.style.opacity = "0.1";
 
+                if (blockImg) {
+                    Array.from(document.images).forEach(mImg => {
+                        mImg.parentElement.style.opacity = "0.0";
+                    })
+                }
                 if (!executed) {
                     showMeAlert();
                 }
