@@ -1,9 +1,5 @@
 var executed = false;
 // var hideContent = false;
-const domek = document.getElementsByTagName('html')[0].innerHTML;
-const brzuszek = document.getElementsByTagName('body')[0];
-const height = window.innerHeight;
-console.log(height);
 var lol;
 var db = [];
 var showAlert;
@@ -16,8 +12,6 @@ var blockTxt;
 function restore_options() {
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.sync.get({
-        // favoriteColor: ['red', 'bbb'],
-        // likesColor: true,
         mList: [],
         showAlert: false,
         blockImg: false,

@@ -16,6 +16,7 @@ function save_options() {
         console.log("Options Saved.")
         console.log("Censore: " + mList);
         status.textContent = 'Options saved.';
+        turnOn ? chrome.browserAction.setIcon({ path: "images/ico_128-active.png" }) : chrome.browserAction.setIcon({ path: "images/ico_128.png" });
         setTimeout(function() {
             status.textContent = '';
         }, 950);
@@ -25,7 +26,6 @@ function save_options() {
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_options() {
-    // Use default value showAlert = false and likesColor = true.
     chrome.storage.sync.get({
             showAlert: false,
             blockImg: false,
@@ -33,9 +33,8 @@ function restore_options() {
             mList: []
         },
         function(items) {
-            // document.getElementById('color').value = items.favoriteColor;
             document.getElementById('turnOnCheckbox').checked = items.turnOn;
-            // document.getElementById('like').checked = items.likesColor;
+            items.turnOn ? chrome.browserAction.setIcon({ path: "images/ico_128-active.png" }) : chrome.browserAction.setIcon({ path: "images/ico_128.png" });
             document.getElementById('showAlertCheckbox').checked = items.showAlert;
             document.getElementById('blockImagesCheckbox').checked = items.blockImg;
             console.log("Censore: " + items.mList);
