@@ -11,14 +11,14 @@ function save_options() {
         turnOn: turnOn,
         mList: mList
     }, function() {
-        // Update status to let user know options were saved.
-        var status = document.getElementById('status');
+        var mSvg = document.getElementById('mSvg');
+        console.log(mSvg);
+        mSvg.style.visibility = "visible";
         console.log("Options Saved.")
         console.log("Censore: " + mList);
-        status.textContent = 'Options saved.';
         turnOn ? chrome.browserAction.setIcon({ path: "images/ico_128-active.png" }) : chrome.browserAction.setIcon({ path: "images/ico_128.png" });
         setTimeout(function() {
-            status.textContent = '';
+            mSvg.style.visibility = "hidden";
         }, 950);
     });
 }
@@ -41,6 +41,8 @@ function restore_options() {
             mList = [...items.mList];
             Array.from(items.mList).forEach(e => newElement(e));
             addRemoveButton();
+            var mSvg = document.getElementById('mSvg');
+            mSvg.style.visibility = "hidden";
         });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
