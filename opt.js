@@ -15,13 +15,13 @@ function save_options() {
         mList: mList,
         blockWlg: blockWlg,
         blockWlgEn: blockWlgEn
-    }, function () {
+    }, function() {
         var mSvg = document.getElementById('mSvg');
         mSvg.style.visibility = "visible";
         console.log("Options Saved.")
         turnOn ? chrome.browserAction.setIcon({ path: "images/ico_128-active.png" }) : chrome.browserAction.setIcon({ path: "images/ico_128.png" });
         refreshButton.disabled = true;
-        setTimeout(function () {
+        setTimeout(function() {
             mSvg.style.visibility = "hidden";
             refreshButton.disabled = false;
         }, 550);
@@ -32,14 +32,14 @@ function save_options() {
 // stored in chrome.storage.
 function restore_options() {
     chrome.storage.sync.get({
-        showAlert: false,
-        blockImg: false,
-        turnOn: true,
-        mList: [],
-        blockWlg: false,
-        blockWlgEn: false
-    },
-        function (items) {
+            showAlert: false,
+            blockImg: false,
+            turnOn: true,
+            mList: [],
+            blockWlg: false,
+            blockWlgEn: false
+        },
+        function(items) {
             document.getElementById('turnOnCheckbox').checked = items.turnOn;
             items.turnOn ? chrome.browserAction.setIcon({ path: "images/ico_128-active.png" }) : chrome.browserAction.setIcon({ path: "images/ico_128.png" });
             document.getElementById('showAlertCheckbox').checked = items.showAlert;
@@ -54,17 +54,13 @@ function restore_options() {
             mSvg.style.visibility = "hidden";
         });
 }
-document.addEventListener('DOMContentLoaded', restore_options);
 
-Array.from(document.getElementsByClassName("mCheckbox-toggle")).forEach(function (e) {
-    e.addEventListener('click', save_options);
-})
 
 // Create a new list item when clicking on the "Add" button
 function addByButton() {
     var inputValue = document.getElementById("myInput").value;
 
-    setTimeout(function () {
+    setTimeout(function() {
         if (inputValue === '') {
             alert("You must write something!");
         } else {
@@ -92,19 +88,10 @@ function newElement(v) {
     li.appendChild(span);
 }
 
-document.getElementById('addButton').addEventListener('click', () => {
-    addByButton();
-});
-
-document.getElementById('myInput').onkeydown = function (e) {
-    if (e.keyCode == 13) {
-        addByButton();
-    }
-};
 
 function addRemoveButton() {
     var ulList = document.getElementById("myUL");
-    ulList.addEventListener('click', function (e) {
+    ulList.addEventListener('click', function(e) {
         if (e.target && e.target.matches('span.close')) {
             var deleteMe = e.target.parentElement.textContent;
             console.log("close super bleble: " + deleteMe);
@@ -121,8 +108,21 @@ function addRemoveButton() {
     }, false)
 }
 
-refreshButton.addEventListener('click', refreshWebsite)
-
 function refreshWebsite() {
     chrome.tabs.reload()
 }
+
+
+refreshButton.addEventListener('click', refreshWebsite);
+document.addEventListener('DOMContentLoaded', restore_options);
+document.getElementById('addButton').addEventListener('click', () => {
+    addByButton();
+});
+document.getElementById('myInput').onkeydown = function(e) {
+    if (e.keyCode == 13) {
+        addByButton();
+    }
+};
+Array.from(document.getElementsByClassName("mCheckbox-toggle")).forEach(function(e) {
+    e.addEventListener('click', save_options);
+});
