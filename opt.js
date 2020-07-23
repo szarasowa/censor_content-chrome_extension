@@ -5,21 +5,23 @@ function save_options() {
     var showAlert = document.getElementById('showAlertCheckbox').checked;
     var blockImg = document.getElementById('blockImagesCheckbox').checked;
     var turnOn = document.getElementById('turnOnCheckbox').checked;
+    var blockWlg = document.getElementById('blockWlgPl').checked;
+    var blockWlgEn = document.getElementById('blockWlgEn').checked;
     chrome.storage.sync.set({
         showAlert: showAlert,
         blockImg: blockImg,
         turnOn: turnOn,
-        mList: mList
-    }, function() {
+        mList: mList,
+        blockWlg: blockWlg,
+        blockWlgEn: blockWlgEn
+    }, function () {
         var mSvg = document.getElementById('mSvg');
-        console.log(mSvg);
         mSvg.style.visibility = "visible";
         console.log("Options Saved.")
-        console.log("Censore: " + mList);
         turnOn ? chrome.browserAction.setIcon({ path: "images/ico_128-active.png" }) : chrome.browserAction.setIcon({ path: "images/ico_128.png" });
-        setTimeout(function() {
+        setTimeout(function () {
             mSvg.style.visibility = "hidden";
-        }, 950);
+        }, 850);
     });
 }
 
@@ -27,16 +29,20 @@ function save_options() {
 // stored in chrome.storage.
 function restore_options() {
     chrome.storage.sync.get({
-            showAlert: false,
-            blockImg: false,
-            turnOn: true,
-            mList: []
-        },
-        function(items) {
+        showAlert: false,
+        blockImg: false,
+        turnOn: true,
+        mList: [],
+        blockWlg: false,
+        blockWlgEn: false
+    },
+        function (items) {
             document.getElementById('turnOnCheckbox').checked = items.turnOn;
             items.turnOn ? chrome.browserAction.setIcon({ path: "images/ico_128-active.png" }) : chrome.browserAction.setIcon({ path: "images/ico_128.png" });
             document.getElementById('showAlertCheckbox').checked = items.showAlert;
             document.getElementById('blockImagesCheckbox').checked = items.blockImg;
+            document.getElementById('blockWlgPl').checked = items.blockWlg;
+            document.getElementById('blockWlgEn').checked = items.blockWlgEn;
             console.log("Censore: " + items.mList);
             mList = [...items.mList];
             Array.from(items.mList).forEach(e => newElement(e));
@@ -47,7 +53,7 @@ function restore_options() {
 }
 document.addEventListener('DOMContentLoaded', restore_options);
 
-Array.from(document.getElementsByClassName("mCheckbox-toggle")).forEach(function(e) {
+Array.from(document.getElementsByClassName("mCheckbox-toggle")).forEach(function (e) {
     e.addEventListener('click', save_options);
 })
 
@@ -55,7 +61,7 @@ Array.from(document.getElementsByClassName("mCheckbox-toggle")).forEach(function
 function addByButton() {
     var inputValue = document.getElementById("myInput").value;
 
-    setTimeout(function() {
+    setTimeout(function () {
         if (inputValue === '') {
             alert("You must write something!");
         } else {
@@ -87,7 +93,7 @@ document.getElementById('addButton').addEventListener('click', () => {
     addByButton();
 });
 
-document.getElementById('myInput').onkeydown = function(e) {
+document.getElementById('myInput').onkeydown = function (e) {
     if (e.keyCode == 13) {
         addByButton();
     }
@@ -95,7 +101,7 @@ document.getElementById('myInput').onkeydown = function(e) {
 
 function addRemoveButton() {
     var ulList = document.getElementById("myUL");
-    ulList.addEventListener('click', function(e) {
+    ulList.addEventListener('click', function (e) {
         if (e.target && e.target.matches('span.close')) {
             var deleteMe = e.target.parentElement.textContent;
             console.log("close super bleble: " + deleteMe);
