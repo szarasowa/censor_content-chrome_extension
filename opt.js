@@ -1,4 +1,5 @@
 var mList = [];
+const refreshButton = document.getElementById('refreshButton');
 
 // Saves options to chrome.storage
 function save_options() {
@@ -19,9 +20,11 @@ function save_options() {
         mSvg.style.visibility = "visible";
         console.log("Options Saved.")
         turnOn ? chrome.browserAction.setIcon({ path: "images/ico_128-active.png" }) : chrome.browserAction.setIcon({ path: "images/ico_128.png" });
+        refreshButton.disabled = true;
         setTimeout(function () {
             mSvg.style.visibility = "hidden";
-        }, 850);
+            refreshButton.disabled = false;
+        }, 550);
     });
 }
 
@@ -116,4 +119,10 @@ function addRemoveButton() {
             }
         }
     }, false)
+}
+
+refreshButton.addEventListener('click', refreshWebsite)
+
+function refreshWebsite() {
+    chrome.tabs.reload()
 }
